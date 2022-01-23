@@ -10,4 +10,8 @@
     <Folder Include="Repositories\Config\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VaccineInfo.Core\VaccineInfo.Core.csproj" />
+  </ItemGroup>
+
 </Project>

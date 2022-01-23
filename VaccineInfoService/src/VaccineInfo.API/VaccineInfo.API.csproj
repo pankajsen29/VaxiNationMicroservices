@@ -19,4 +19,9 @@
     <Folder Include="V1\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VaccineInfo.Core\VaccineInfo.Core.csproj" />
+    <ProjectReference Include="..\VaccineInfo.Infrastructure\VaccineInfo.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

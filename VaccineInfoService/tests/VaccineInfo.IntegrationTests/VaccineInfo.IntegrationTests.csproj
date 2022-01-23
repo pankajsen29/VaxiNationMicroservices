@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\VaccineInfo.Infrastructure\VaccineInfo.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
