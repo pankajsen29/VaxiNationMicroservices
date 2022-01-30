@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\Config\" />
+    <Folder Include="Data\Config\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.14.1" />
   </ItemGroup>
 
   <ItemGroup>

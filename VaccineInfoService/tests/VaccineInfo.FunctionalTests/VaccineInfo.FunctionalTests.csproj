@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\VaccineInfo.API\VaccineInfo.API.csproj" />
+    <ProjectReference Include="..\..\src\VaccineInfo.API\VaccineInfo.Api.csproj" />
   </ItemGroup>
 
 </Project>

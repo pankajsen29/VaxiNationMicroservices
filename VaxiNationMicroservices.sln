@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{859C3868-AFF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{2FBE09CA-646A-4CD3-91D3-94DB0D4CD2F8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.API", "VaccineInfoService\src\VaccineInfo.API\VaccineInfo.API.csproj", "{BF822121-D183-42FE-A6D3-DFB1C2E1F24E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.Api", "VaccineInfoService\src\VaccineInfo.API\VaccineInfo.Api.csproj", "{BF822121-D183-42FE-A6D3-DFB1C2E1F24E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.Core", "VaccineInfoService\src\VaccineInfo.Core\VaccineInfo.Core.csproj", "{B82407EB-F553-4793-846C-6B3BFDB668FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.Infrastructure", "VaccineInfoService\src\VaccineInfo.Infrastructure\VaccineInfo.Infrastructure.csproj", "{78768569-F47A-4F90-8AE7-CD678E9A6E33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineInfo.IntegrationTests", "VaccineInfoService\tests\VaccineInfo.IntegrationTests\VaccineInfo.IntegrationTests.csproj", "{71B716D7-A4AF-4E70-98DA-48D600A88FBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.IntegrationTests", "VaccineInfoService\tests\VaccineInfo.IntegrationTests\VaccineInfo.IntegrationTests.csproj", "{71B716D7-A4AF-4E70-98DA-48D600A88FBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineInfo.UnitTests", "VaccineInfoService\tests\VaccineInfo.UnitTests\VaccineInfo.UnitTests.csproj", "{C7447AB5-BAE4-40B4-BCB1-1E54644DAF85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.UnitTests", "VaccineInfoService\tests\VaccineInfo.UnitTests\VaccineInfo.UnitTests.csproj", "{C7447AB5-BAE4-40B4-BCB1-1E54644DAF85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineInfo.FunctionalTests", "VaccineInfoService\tests\VaccineInfo.FunctionalTests\VaccineInfo.FunctionalTests.csproj", "{2FDC09DB-8A7D-4FB4-8604-E1C29E865EB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.FunctionalTests", "VaccineInfoService\tests\VaccineInfo.FunctionalTests\VaccineInfo.FunctionalTests.csproj", "{2FDC09DB-8A7D-4FB4-8604-E1C29E865EB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
