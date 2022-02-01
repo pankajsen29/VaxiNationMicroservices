@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using SerilogTimings;
 using VaccineInfo.Api.Dtos;
 using VaccineInfo.Api.Extensions;
 using VaccineInfo.Core.Interfaces.Services;
@@ -14,23 +15,35 @@ namespace VaccineInfo.Api.Controllers
     {
         private readonly IVaccineService _vaccineService;
         private readonly IMapper _mapper;
+        private readonly ILogger<VaccinesController> _logger;
 
-        public VaccinesController(IVaccineService vaccineService, IMapper mapper)
+        public VaccinesController(IVaccineService vaccineService, IMapper mapper, ILogger<VaccinesController> logger)
         {
             _vaccineService = vaccineService;
             _mapper = mapper;
-
+            _logger = logger;
         }
 
         [HttpGet]  //GET /vaccines
         public async Task<IEnumerable<VaccineDto>> GetVaccinesAsync()
         {
-            return (await _vaccineService.GetVaccinesAsync()).Select(v => v.AsDto()); //[Hint: An alternative way without Automapper]
+            _logger.LogInformation("STARTED: GetVaccinesAsync()");
+
+            IEnumerable<VaccineDto> vaccines = null;
+            using (Operation.Time("DB Operation: GetVaccinesAsync"))
+            {
+                vaccines = (await _vaccineService.GetVaccinesAsync()).Select(v => v.AsDto()); //[Hint: An alternative way without Automapper]
+            }
+
+            _logger.LogInformation($"{DateTime.UtcNow.ToString("hh:mm:ss")}: Retrieved {vaccines.Count()} vaccines");
+
+            return vaccines;
         }
 
         [HttpGet("{id}")]  //GET /vaccines/{id}
         public async Task<ActionResult<VaccineDto>> GetVaccineAsync(Guid id)
         {
+            _logger.LogInformation("STARTED: GetVaccineAsync(Guid id), ID: {id}", id.ToString());
             var v = await _vaccineService.GetVaccineAsync(id);
             if (v is null)
             {
