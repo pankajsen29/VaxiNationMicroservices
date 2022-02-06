@@ -22,6 +22,7 @@ namespace VaccineInfo.Core.Services
         }
         public async Task<Vaccine> GetVaccineAsync(Guid id)
         {
+            //based on business logic any core exception (e.g. CoreNotFoundException/CoreValidationException) can be thrown here
             return await _vaccinesDataStore.GetVaccineAsync(id);
         }
         public async Task UpdateVaccineAsync(Vaccine vaccine)

@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Serilog;
 using VaccineInfo.Api.Mappings;
+using VaccineInfo.Api.Middlewares;
 using VaccineInfo.API;
 
 try
@@ -65,13 +66,9 @@ void ConfigureMiddleware(IApplicationBuilder app, IWebHostEnvironment env)
 {
     if (env.IsDevelopment())
     {
-        app.UseDeveloperExceptionPage();
+        //app.UseDeveloperExceptionPage();
         app.UseSwagger();
         app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VaccineInfo.Api V1"));
-    }
-    else
-    {
-        app.UseExceptionHandler("/error");
     }
 
     app.UseHttpsRedirection();
@@ -79,6 +76,8 @@ void ConfigureMiddleware(IApplicationBuilder app, IWebHostEnvironment env)
     app.UseSerilogRequestLogging(); //this adds serilog middleware to the request pipeline.
                                     //Logging will happen using serilog now and all logs by asp.net core logger will also be redirected to serilog.
                                     //That's how serilog integration doesn't affect the existing asp.net core logging 
+
+    app.UseMiddleware<ExceptionHandlingMiddleware>(); //adding the custom middleware to the request pipeline
 
     app.UseAuthorization();
 }

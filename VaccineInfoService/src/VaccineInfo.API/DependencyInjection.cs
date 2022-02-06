@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using VaccineInfo.Api.Middlewares;
 using VaccineInfo.Core.Interfaces.Data;
 using VaccineInfo.Core.Interfaces.Services;
 using VaccineInfo.Core.Services;
@@ -29,6 +30,9 @@ namespace VaccineInfo.API
             {
                 throw new ArgumentNullException(nameof(configuration));
             }
+
+            //Register exception handling middleware
+            services.AddScoped<ExceptionHandlingMiddleware>();
 
             //MongoDB serialization: it tells, anytime our entity/model contains a Guid/DateTimeOffset, it should actually get serialized as string in the DB
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));

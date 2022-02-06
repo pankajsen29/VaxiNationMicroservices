@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using VaccineInfo.Core.Interfaces.Data;
 using VaccineInfo.Core.Models;
 using VaccineInfo.Infrastructure.Dtos;
+using VaccineInfo.Infrastructure.Exceptions;
 
 namespace VaccineInfo.Infrastructure.Data
 {
@@ -21,6 +22,12 @@ namespace VaccineInfo.Infrastructure.Data
             IMongoDatabase database = mongoClient.GetDatabase(_databaseName);
             _vaccinesCollection = database.GetCollection<VaccineDto>(_collectionName);
             this._mapper = mapper;
+
+            bool isMongoLive = database.RunCommandAsync((Command<BsonDocument>)"{ping:1}").Wait(1000);
+            if (!isMongoLive)
+            {
+                throw new InfrastructureDBConnectionException("Internal Database server is not alive!");
+            }
         }
         public async Task CreateVaccineAsync(Vaccine vaccine)
         {

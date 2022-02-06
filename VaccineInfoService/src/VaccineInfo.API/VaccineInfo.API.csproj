@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="Extensions\" />
     <Folder Include="Mappings\" />
+    <Folder Include="Middlewares\" />
     <Folder Include="V1\Controllers\" />
     <Folder Include="Dtos\" />
     <Folder Include="V2\" />
