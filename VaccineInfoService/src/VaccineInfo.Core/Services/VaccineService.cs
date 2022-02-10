@@ -1,4 +1,5 @@
-﻿using VaccineInfo.Core.Interfaces.Data;
+﻿using Microsoft.Extensions.Logging;
+using VaccineInfo.Core.Interfaces.Data;
 using VaccineInfo.Core.Interfaces.Services;
 using VaccineInfo.Core.Models;
 
@@ -7,9 +8,12 @@ namespace VaccineInfo.Core.Services
     public class VaccineService:IVaccineService
     {
         private readonly IVaccinesDataStore _vaccinesDataStore;
-        public VaccineService(IVaccinesDataStore vaccinesDataStore)
+        private readonly ILogger<VaccineService> _logger;
+
+        public VaccineService(IVaccinesDataStore vaccinesDataStore, ILogger<VaccineService> logger)
         {
             this._vaccinesDataStore = vaccinesDataStore;
+            this._logger = logger;
         }
 
         public async Task CreateVaccineAsync(Vaccine vaccine)

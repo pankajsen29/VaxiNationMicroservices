@@ -1,8 +1,7 @@
-using Microsoft.OpenApi.Models;
 using Serilog;
+using VaccineInfo.Api.Extensions;
 using VaccineInfo.Api.Mappings;
 using VaccineInfo.Api.Middlewares;
-using VaccineInfo.API;
 
 try
 {
@@ -56,20 +55,14 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddHttpContextAccessor();
 
     services.AddEndpointsApiExplorer();
-    services.AddSwaggerGen(c =>
-    {
-        c.SwaggerDoc("v1", new OpenApiInfo { Title = "VaccineInfo.Api", Version = "V1" });
-    }).AddSwaggerGenNewtonsoftSupport();
+
+    //configure swagger
+    services.ConfigureSwagger();
 }
 
 void ConfigureMiddleware(IApplicationBuilder app, IWebHostEnvironment env) 
 {
-    if (env.IsDevelopment())
-    {
-        //app.UseDeveloperExceptionPage();
-        app.UseSwagger();
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "VaccineInfo.Api V1"));
-    }
+    app.ConfigureSwagger(env);
 
     app.UseHttpsRedirection();
 

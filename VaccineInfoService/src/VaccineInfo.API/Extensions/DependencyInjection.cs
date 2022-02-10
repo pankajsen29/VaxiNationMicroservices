@@ -9,7 +9,7 @@ using VaccineInfo.Core.Services;
 using VaccineInfo.Infrastructure.Data;
 using VaccineInfo.Infrastructure.Data.Config;
 
-namespace VaccineInfo.API
+namespace VaccineInfo.Api.Extensions
 {
     public static class DependencyInjection
     {
