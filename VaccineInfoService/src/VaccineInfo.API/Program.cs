@@ -46,10 +46,13 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     //AddNewtonsoftJson: this is for PATCH using JsonPatchDocument
     services.AddControllers(options => options.SuppressAsyncSuffixInActionNames = false).AddNewtonsoftJson();
 
-    //Register AutoMapper
+    //Register AutoMapper 
     services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>());
     //Alternative code below: traverse the assembly and checks for the class which inherits from the Profile class of AutoMapper.
     //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); 
+
+    //to have all generated paths URLs in lower case
+    services.AddRouting(options => options.LowercaseUrls = true);
 
     //to access the HttpContext of the request (used for serilog enricher)
     services.AddHttpContextAccessor();
