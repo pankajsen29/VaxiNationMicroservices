@@ -7,11 +7,12 @@ using VaccineInfo.Api.Extensions;
 using VaccineInfo.Core.Interfaces.Services;
 using VaccineInfo.Core.Models;
 
-namespace VaccineInfo.Api.V1.Controllers
+
+namespace VaccineInfo.Api.Controllers.V2
 {
     [ApiController]
     [Route("api/v{version:apiVersion}/[controller]")] //OR, [Route("[vaccines]")] 
-    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     public class VaccinesController : ControllerBase
     {
         private readonly IVaccineService _vaccineService;
