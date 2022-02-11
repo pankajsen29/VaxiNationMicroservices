@@ -61,9 +61,12 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 
     //configure swagger
     services.ConfigureSwagger();
+
+    //add HealthCheck service
+    services.AddHealthCheckService(configuration);
 }
 
-void ConfigureMiddleware(IApplicationBuilder app, IWebHostEnvironment env) 
+void ConfigureMiddleware(IApplicationBuilder app, IWebHostEnvironment env)
 {
     app.ConfigureSwagger(env);
 
@@ -75,11 +78,19 @@ void ConfigureMiddleware(IApplicationBuilder app, IWebHostEnvironment env)
 
     app.UseMiddleware<ExceptionHandlingMiddleware>(); //adding the custom middleware to the request pipeline
 
-    app.UseAuthorization();
+    app.UseRouting();
+
+    app.UseAuthorization();    
 }
 
-void ConfigureEndpoints(IEndpointRouteBuilder app)
+void ConfigureEndpoints(IApplicationBuilder app)
 {
-    app.MapControllers();
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();
+    });
+
+    //add HealthCheck endpoint
+    app.ConfigureHealthCheckEndpoint();
 }
 
