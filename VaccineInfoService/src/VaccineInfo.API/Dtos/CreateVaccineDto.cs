@@ -31,7 +31,7 @@ namespace VaccineInfo.Api.Dtos
         /// 
         /// </summary>
         [Required]
-        [Range(15, 365)]
+        [Range(0, 365)]
         public ushort MinDaysBetweenDoses { get; init; }
 
         /// <summary>
