@@ -153,7 +153,7 @@ Also, a custom type (Exceptions->ApiError) is used to return the error to the cl
 **Logging**:
 
 
-**Serilog**: 
+***Serilog***: 
 
 _Used Serilog for the logging. It is chosen for these benefits specially: 
 1.It supports variety of log targets, as sinks.
@@ -166,7 +166,7 @@ _Nuget: Serilog.AspNetCore
 (WriteTo.Console and WriteTo.File are built-in in this package)_
 
 
-**Serilog Enrichers**:
+***Serilog Enrichers***:
 
 _Used below enrichers for adding additional information to the log messages:
 Nugets:
@@ -174,13 +174,14 @@ Serilog.Enrichers.CorrelationId  (it allows us to group actions together with an
 Serilog.Enrichers.Environment  (logs the machine name, useful when the API is running in multiple servers.)_
 
 
-**Log targets/sinks**:
+***Log targets/sinks***:
 
 _Console,
 File (in two different files, one with normal string log and other one in JSON format),
 Serilog.Sinks.Seq (It is configured to be able to see the log messages in a structured way externally using browser. It’s easy to query and filter those logs in Seq Browser URL.)_
 
-**Logging the timed operations**:
+
+***Logging the timed operations***:
 
 _It helps in logging the time taken for a particular operation, e.g. execution of a database query.
 Nuget: SerilogTimings_
@@ -197,9 +198,9 @@ _Nuget_: _AspNetCore.HealthChecks.MongoDb
 This is added to check the health of backend mongo db._
 
 _Multiple endpoints are added to see if the service is UP and ready for accepting requests.
-**api/health/ready** => this endpoint tells if the service is ready to receive requests_
+***api/health/ready*** => this endpoint tells if the service is ready to receive requests_
 (Complete URLs: https://localhost:7028/api/health/ready)
-_**api/health/live** => is the service alive?_
+_***api/health/live*** => is the service alive?_
 (Complete URLs: https://localhost:7028/api/health/live)
 
 
@@ -236,7 +237,7 @@ _The below article describes nicely the docker image building process for a mult
 https://www.softwaredeveloper.blog/multi-project-dotnet-core-solution-in-docker-image
 
 
-**docker build command**:
+***docker build command***:
 
 _Below shown the special way of building docker image for a project with dependencies (other projects)_:
 
@@ -250,12 +251,12 @@ Keep the "Dockerfile" inside the main project, which actually helps in having mo
 
  
 
-**Where to keep .dockerignore file**:
+***Where to keep .dockerignore file***:
 
 _Docker CLI looks for .dockerignore file in root directory of the build context, so we move it to solution directory. It’s also better, because we don’t need to create and maintain many .dockerignore files for many projects, we keep one for all of them._
 
 
-**Steps to use mongodb container along with our API container**:
+***Steps to use mongodb container along with our API container***:
 
 1.create a network:
 
@@ -314,7 +315,7 @@ Response:
 5.Press Ctrl+C to stop the docker container.
 
 
-**Steps to push the API image to Docker hub**:
+***Steps to push the API image to Docker hub***:
 
 To share the docker image, we need to push to dockerhub.
 
