@@ -36,6 +36,7 @@ _(Clean Architecture and Dependency Inversion Principle)_
 **Data annotations**
 
 **Dependency Injection**:
+
 _(using “ConfigureDependencyInjection” extension method)
 (Below lifetimes are used for registering the services under DI container:
 Singleton: the class is instantiated once for the whole application.
@@ -43,15 +44,18 @@ Transient: the class is instantiated once per service resolution, means the clas
 Scoped: the class is instantiated once per scope, meaning the instantiation happens only once for a request/ a single connection. Think of it like a browser tab. This is useful because this actually can be treated as current user’s scope.)_
 
 **DTO – data transfer objects**:
+
 _(not to expose the models/entities to external world)
 this is to make an independent contract with the client, so that it doesn’t get affected when there is any addition/deletion to the internal entity/data store._
 
 **Automapper**: 
+
 _we need a mapper to map the DTO object to the actual model in the PATCH action method, to be able to accept the partial changes in the form DTO and applying them to the actual model entity. 
 (Nuget: AutoMapper.Extensions.Microsoft.DependencyInjection)_
 
 
 **Connecting to mongodb**:
+
 (Nuget: MongoDB.Driver)
 
 (Assumptions: there is a user created named:
@@ -61,7 +65,9 @@ with ‘readwrite’ access)
 
 
 **CRUD operations**:
+
 _(Http Verbs: GET, POST, PUT, PATCH, DELETE etc.) – async calls
+
 (Swagger can be used to test these operations. Also, the complete URLs are shown below which are usable to test these using POSTMAN)_
 
 GET (API version v1): https://localhost:7028/api/v1/vaccines
@@ -198,9 +204,13 @@ _Nuget_: _AspNetCore.HealthChecks.MongoDb
 This is added to check the health of backend mongo db._
 
 _Multiple endpoints are added to see if the service is UP and ready for accepting requests.
+
 ***api/health/ready*** => this endpoint tells if the service is ready to receive requests_
+
 (Complete URLs: https://localhost:7028/api/health/ready)
+
 _***api/health/live*** => is the service alive?_
+
 (Complete URLs: https://localhost:7028/api/health/live)
 
 
@@ -214,7 +224,9 @@ Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer
 Note: Both versions of the controllers are having the same API definitions though, because the main intention is to demonstrate how the versioning works. The implementation of the API including the core domain layer can be changed as needed._
 
 _Notice the below attributes on the controllers in both V1 and V2 folders, to see how versioning is applied to the controller_:
+
 [Route("api/v{version:apiVersion}/[controller]")]
+
 [ApiVersion("1.0")]
 
 _And also, the other challenge was to enable swagger with versioning_:
