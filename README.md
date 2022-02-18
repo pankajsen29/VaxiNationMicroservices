@@ -339,11 +339,11 @@ Password:
 
 2. Then re-tag the image as below:
 
-docker tag vaccineinfoapiimage:v1 pankajsen29/ vaccineinfoapiimage:v1
+docker tag vaccineinfoapiimage:v1 pankajsen29/vaccineinfoapiimage:v1
 
 3. Then push the docker image to docker hub using:
 
-docker push pankajsen29/ vaccineinfoapiimage:v1
+docker push pankajsen29/vaccineinfoapiimage:v1
 
 4. Delete the local images, logout from docker hub and then run the container for the same image. Then it will get pulled from docker hub and start running.
 
