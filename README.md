@@ -1,6 +1,6 @@
 # 						**Basic Description of the Microservice solution **
 
-*** Disclaimer***: This solution is made solely as part of my studies/practices. The examples data used here are all fictitious and don't carry any factual correctness, these are used only for demonstration purposes.
+***Disclaimer: This solution is made solely as part of my studies/practices. The examples data used here are all fictitious and don't carry any factual correctness, these are used only for demonstration purposes.***
 
 This solution consists of many different basic microservices, all are built following the Clean Architecture and DDD (Domain Driven Design) pattern, which use/demonstrate many different concepts (or building blocks) of ASP.NET Core REST APIs.
 
