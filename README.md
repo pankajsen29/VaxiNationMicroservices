@@ -352,6 +352,12 @@ docker push pankajsen29/vaccineinfoapiimage:v1
 docker logout
 
 
+***Get this iamge from Docker Hub***:
+
+This image is pushed to Docker Hub and made available for public access/use, use the below command to pull it to local system:
+
+docker pull pankajsen29/vaccineinfoapiimage
+
 
 **Domain layer Project Name**: VaccineInfo.Core
 
