@@ -5,7 +5,7 @@ using VaccineInfo.Api.Middlewares;
 
 try
 {
-    Log.Information("Starting the web host..");
+    //Log.Information("Starting the web host..");
     var builder = WebApplication.CreateBuilder(args);
 
     //configure Serilog
