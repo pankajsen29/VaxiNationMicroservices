@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace VaccineInfo.UnitTests
+namespace VaccineInfo.Api.UnitTests
 {
     public class UnitTest1
     {
