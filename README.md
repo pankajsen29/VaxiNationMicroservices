@@ -25,7 +25,9 @@ _(Clean Architecture and Dependency Inversion Principle)_
 
 **Infrastructure/Data Access layer**: _It implements the database access logic. And can be adapted anytime in case there are changes required in the backend DB (e.g., table/column change or the change of entire DB itself.)_
 
-###                                                **API/microservice:  VaccineInfoService:**
+##                                                **API/microservice:  VaccineInfoService:**
+
+_TO BE UPDATED: API Request Flow diagram_
 
 **API Project Name**: VaccineInfo.Api
 
@@ -363,7 +365,7 @@ docker pull pankajsen29/vaccineinfoapiimage
 
 **Domain layer Project Name**: VaccineInfo.Core
 
-This is a Class Library project. This is basically the core domain layer which implements the business logic for the API layer to consume for managing various types of vaccine information. It doesn’t have any dependencies to any other layer of the of API service.
+This is a Class Library project. This is basically the core domain layer which implements the business logic for the API layer to consume for managing various types of vaccine information. It also defines the interfaces for the infrastructure layer to implement. And this way it ensures other layers (Clean Architecture) to be dependent on it rather than it itself having dependencies to any other layers.
 
 
 **Database layer Project Name**: VaccineInfo.Infrastructure
@@ -396,4 +398,77 @@ Moq (this is to create mock object for the external dependencies)
 FluentAssertions (assertion library)
 
 
+
+##                                                **API/microservice:  WeatherForecastRemoteService:**
+
+_TO BE UPDATED: API Request Flow diagram_
+
+
+**API Project Name**: 
+
+WeatherForecastRemote.Api
+
+**API Project Description**: 
+
+_Web API project with basic APIs for calling a remote microservice for gathering weather forecast for few days. This data is used to alert user about the forecast near to his vaccine appointment date. Somehow, I made the use case relatable here only to demonstrate how an external or remote API/service can be invoked.
+(Few examples of real-world external services in the context of vaccination program can be SMS confirmation service, OTP validation service or Unique ID (AADHAR Id) verification service etc.)_
+
+
+**This project Demonstrates the below concepts/building blocks**:
+
+***Remote Service Details***:
+
+_The first part of the remote service is stored in the appsettings.json file_:
+
+  "ServiceSettings": {
+    "OpenWeatherHost": "api.openweathermap.org"
+    }
+
+_And the rest of the ServiceSettings (which holds the secret API Key) is stored using .NET Secret Manager (secrets.json) as below_:
+"ServiceSettings": {
+    "ApiKey": "4f2bd981e39d0c64c91460d9705238c2"
+  }
+
+_Hint: Key is not a valid one._
+
+
+At runtime these details are read from the configuration and maintained by the instance of  ServiceSettings (WeatherForecastRemote.Infrastructure-> Data-> Config-> ServiceSettings.cs) and added to the dependency container. 
+
+
+Example of the actual URL of the remote service:
+https://api.openweathermap.org/data/2.5/weather?q=Bangalore&appid=4f2bd981e39d0c64c91460d9705238c2
+
+(Hint: This is a free API to get the current weather for a given city name)
+
+
+
+**Domain layer Project Name**: 
+
+WeatherForecastRemote.Core
+
+**Domain Project Description**: 
+
+This is a Class Library project. This is basically the core domain layer which implements the business logic for the API layer to consume for calling a remote weather service to collect forecast data. It also defines the interfaces for the infrastructure layer to implement. And this way it ensures other layers (Clean Architecture) to be dependent on it rather than it itself having dependencies to any other layers.
+
+
+
+**Infrastructure layer Project Name**: 
+
+WeatherForecastRemote.Infrastructure
+
+**Infrastructure Project Description**: 
+
+_This is a Class Library project. This is basically the data access layer which implements the actual remote calling operation which are called by the API layer indirectly through the Core layer for collecting the weather data to alert the user about the forecast of the appointment day._
+
+
+***HttpClient***:
+
+_It provides a class for sending HTTP requests and receiving HTTP responses from a resource identified by a URI. We have used the instance of HttpClient to make remote API call._
+
+
+**Test Projects Layer**:
+
+Below is the test projects added for the above WeatherForecastRemote service. This is a xUnit Test Project.
+
+WeatherForecastRemote.Api.UnitTests
 
