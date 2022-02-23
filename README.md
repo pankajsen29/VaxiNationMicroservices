@@ -363,23 +363,37 @@ docker pull pankajsen29/vaccineinfoapiimage
 
 **Domain layer Project Name**: VaccineInfo.Core
 
-API Project Description: This is a Class Library project. This is basically the core domain layer which implements the business logic for the API layer to consume for managing various types of vaccine information. It doesn’t have any dependencies to any other layer of the of API service.
+This is a Class Library project. This is basically the core domain layer which implements the business logic for the API layer to consume for managing various types of vaccine information. It doesn’t have any dependencies to any other layer of the of API service.
 
 
 **Database layer Project Name**: VaccineInfo.Infrastructure
 
-API Project Description: This is a Class Library project. This is basically the data access layer which implements the database operations which are called by the API layer indirectly though the Core layer for managing various types of vaccine information in the database.
+This is a Class Library project. This is basically the data access layer which implements the database operations which are called by the API layer indirectly though the Core layer for managing various types of vaccine information in the database.
 
 
-**Test Project Layer**: VaccineInfo.FunctionalTests
 
-Tests the VaccineInfo.API project.
+**Test Projects Layer**: 
 
-**Test Project Layer**: VaccineInfo.IntegrationTests
+Below are the test projects added for the above VaccineInfo service. All these are xUnit Test Projects.
 
-Tests the VaccineInfo.Infrastructure project.
+VaccineInfo.Api.UnitTests
 
-**Test Project Layer**: VaccineInfo.UnitTests
+VaccineInfo.Core.UnitTests
 
-Tests the VaccineInfo.Core project (which doesn’t have any dependencies to other project components)
+VaccineInfo.Infrastructure.UnitTests
+
+VaccineInfo.Api.IntegrationTests
+
+
+Nuget:
+
+xunit
+
+Microsoft.Extensions.Logging.Abstraction  (because we are using ILogger class in our controller)
+
+Moq (this is to create mock object for the external dependencies)
+
+FluentAssertions (assertion library)
+
+
 
