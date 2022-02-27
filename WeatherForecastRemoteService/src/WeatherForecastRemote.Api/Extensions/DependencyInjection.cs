@@ -1,4 +1,5 @@
-﻿using WeatherForecastRemote.Core.Interfaces.Data;
+﻿using Polly;
+using WeatherForecastRemote.Core.Interfaces.Data;
 using WeatherForecastRemote.Core.Interfaces.Services;
 using WeatherForecastRemote.Core.Services;
 using WeatherForecastRemote.Infrastructure.Data;
@@ -27,14 +28,16 @@ namespace WeatherForecastRemote.Api.Extensions
             }
 
             //remote service configurations are read and will be populated in an instance of ServiceSettings and also got registered in the dependency engine
-            services.Configure<ServiceSettings>(configuration.GetSection(nameof(ServiceSettings)));
-
-            //registered HttpClient
-            services.AddHttpClient<WeatherClient>();
+            services.Configure<ServiceSettings>(configuration.GetSection(nameof(ServiceSettings)));            
 
             //Register remote weather service classes 
             services.AddScoped<IWeatherService, WeatherService>();
             services.AddScoped<IWeatherClient, WeatherClient>();
+
+            //registered HttpClient
+            services.AddHttpClient<IWeatherClient, WeatherClient>()
+                .AddTransientHttpErrorPolicy(policy => policy.WaitAndRetryAsync(10, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))))
+                .AddTransientHttpErrorPolicy(policy => policy.CircuitBreakerAsync(3, TimeSpan.FromSeconds(10)));
 
             return services;
         }

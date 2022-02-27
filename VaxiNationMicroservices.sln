@@ -31,15 +31,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Core", "Auth
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Infrastructure", "AuthenticationService\src\Authentication.Infrastructure\Authentication.Infrastructure.csproj", "{3180BFDA-99B5-42CA-9036-FB7EC8002EFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineInfo.Api.UnitTests", "VaccineInfoService\tests\VaccineInfo.Api.UnitTests\VaccineInfo.Api.UnitTests.csproj", "{51FAE480-DF8F-479F-A1BA-1C1F08DF2835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.Api.UnitTests", "VaccineInfoService\tests\VaccineInfo.Api.UnitTests\VaccineInfo.Api.UnitTests.csproj", "{51FAE480-DF8F-479F-A1BA-1C1F08DF2835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineInfo.Core.UnitTests", "VaccineInfoService\tests\VaccineInfo.Core.UnitTests\VaccineInfo.Core.UnitTests.csproj", "{413D366C-51E3-4842-BC49-77FDA92E360F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.Core.UnitTests", "VaccineInfoService\tests\VaccineInfo.Core.UnitTests\VaccineInfo.Core.UnitTests.csproj", "{413D366C-51E3-4842-BC49-77FDA92E360F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineInfo.Infrastructure.UnitTests", "VaccineInfoService\tests\VaccineInfo.Infrastructure.UnitTests\VaccineInfo.Infrastructure.UnitTests.csproj", "{375AEAED-C162-479B-B8B5-C9E3F9019126}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.Infrastructure.UnitTests", "VaccineInfoService\tests\VaccineInfo.Infrastructure.UnitTests\VaccineInfo.Infrastructure.UnitTests.csproj", "{375AEAED-C162-479B-B8B5-C9E3F9019126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccineInfo.Api.IntegrationTests", "VaccineInfoService\tests\VaccineInfo.Api.IntegrationTests\VaccineInfo.Api.IntegrationTests.csproj", "{7F033FCD-8E18-4315-8CDF-4504B2FB8C3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VaccineInfo.Api.IntegrationTests", "VaccineInfoService\tests\VaccineInfo.Api.IntegrationTests\VaccineInfo.Api.IntegrationTests.csproj", "{7F033FCD-8E18-4315-8CDF-4504B2FB8C3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Api.UnitTests", "AuthenticationService\tests\Authentication.Api.UnitTests\Authentication.Api.UnitTests.csproj", "{D267AC5A-D43C-42FD-A78A-F12A4130E103}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Api.UnitTests", "AuthenticationService\tests\Authentication.Api.UnitTests\Authentication.Api.UnitTests.csproj", "{D267AC5A-D43C-42FD-A78A-F12A4130E103}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WeatherForecastRemoteService", "WeatherForecastRemoteService", "{9E4776F9-E71F-4946-9532-000E20B12737}"
 EndProject
@@ -47,13 +47,31 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1B564787-617
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1C43F8CB-E7E3-4B24-81CA-63CD4566EE6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastRemote.Api", "WeatherForecastRemoteService\src\WeatherForecastRemote.Api\WeatherForecastRemote.Api.csproj", "{BD3F05A4-D144-430C-B720-4CB0555CE7C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecastRemote.Api", "WeatherForecastRemoteService\src\WeatherForecastRemote.Api\WeatherForecastRemote.Api.csproj", "{BD3F05A4-D144-430C-B720-4CB0555CE7C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastRemote.Api.UnitTests", "WeatherForecastRemoteService\tests\WeatherForecastRemote.Api.UnitTests\WeatherForecastRemote.Api.UnitTests.csproj", "{226E40A5-183E-490C-BEEE-6D9716584F0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecastRemote.Api.UnitTests", "WeatherForecastRemoteService\tests\WeatherForecastRemote.Api.UnitTests\WeatherForecastRemote.Api.UnitTests.csproj", "{226E40A5-183E-490C-BEEE-6D9716584F0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastRemote.Core", "WeatherForecastRemoteService\src\WeatherForecastRemote.Core\WeatherForecastRemote.Core.csproj", "{C9FB7E08-D59E-4D44-921D-A68001D32352}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecastRemote.Core", "WeatherForecastRemoteService\src\WeatherForecastRemote.Core\WeatherForecastRemote.Core.csproj", "{C9FB7E08-D59E-4D44-921D-A68001D32352}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastRemote.Infrastructure", "WeatherForecastRemoteService\src\WeatherForecastRemote.Infrastructure\WeatherForecastRemote.Infrastructure.csproj", "{F8A994B9-DD4D-49C1-85E6-EEAAFABDB7E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecastRemote.Infrastructure", "WeatherForecastRemoteService\src\WeatherForecastRemote.Infrastructure\WeatherForecastRemote.Infrastructure.csproj", "{F8A994B9-DD4D-49C1-85E6-EEAAFABDB7E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VaccinationAppointmentService", "VaccinationAppointmentService", "{88EC9EF1-4BE1-4058-984D-6F32F17BEDC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{81DAEC31-A13C-4BA0-B90A-F3E7B73A2271}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{61331C26-15E8-43E9-8266-986DE923B0A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccinationAppointment.Api", "VaccinationAppointmentService\src\VaccinationAppointment.Api\VaccinationAppointment.Api.csproj", "{BF684197-CAD3-44CF-81D3-A22378617EE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccinationAppointment.Core", "VaccinationAppointmentService\src\VaccinationAppointment.Core\VaccinationAppointment.Core.csproj", "{57783619-A954-4F46-BD1A-EE4306286CE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccinationAppointment.Infrastructure", "VaccinationAppointmentService\src\VaccinationAppointment.Infrastructure\VaccinationAppointment.Infrastructure.csproj", "{9490E9C8-829E-4ED5-A52B-B11572C47BC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaccinationAppointment.Api.UnitTests", "VaccinationAppointmentService\tests\VaccinationAppointment.Api.UnitTests\VaccinationAppointment.Api.UnitTests.csproj", "{44ABF47B-2139-450B-977B-414ADD3EB66D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VaccinationCentreInfoService", "VaccinationCentreInfoService", "{58291FDA-6AD9-4157-80F1-BD7C55215DD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VaccineAllocationService", "VaccineAllocationService", "{A9CB2DC1-2E02-403A-93D9-DF85AC3BD3C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +139,22 @@ Global
 		{F8A994B9-DD4D-49C1-85E6-EEAAFABDB7E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A994B9-DD4D-49C1-85E6-EEAAFABDB7E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8A994B9-DD4D-49C1-85E6-EEAAFABDB7E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF684197-CAD3-44CF-81D3-A22378617EE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF684197-CAD3-44CF-81D3-A22378617EE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF684197-CAD3-44CF-81D3-A22378617EE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF684197-CAD3-44CF-81D3-A22378617EE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57783619-A954-4F46-BD1A-EE4306286CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57783619-A954-4F46-BD1A-EE4306286CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57783619-A954-4F46-BD1A-EE4306286CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57783619-A954-4F46-BD1A-EE4306286CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9490E9C8-829E-4ED5-A52B-B11572C47BC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9490E9C8-829E-4ED5-A52B-B11572C47BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9490E9C8-829E-4ED5-A52B-B11572C47BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9490E9C8-829E-4ED5-A52B-B11572C47BC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44ABF47B-2139-450B-977B-414ADD3EB66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44ABF47B-2139-450B-977B-414ADD3EB66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44ABF47B-2139-450B-977B-414ADD3EB66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44ABF47B-2139-450B-977B-414ADD3EB66D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +181,12 @@ Global
 		{226E40A5-183E-490C-BEEE-6D9716584F0E} = {1C43F8CB-E7E3-4B24-81CA-63CD4566EE6B}
 		{C9FB7E08-D59E-4D44-921D-A68001D32352} = {1B564787-617D-467A-967C-673738971CDD}
 		{F8A994B9-DD4D-49C1-85E6-EEAAFABDB7E8} = {1B564787-617D-467A-967C-673738971CDD}
+		{81DAEC31-A13C-4BA0-B90A-F3E7B73A2271} = {88EC9EF1-4BE1-4058-984D-6F32F17BEDC2}
+		{61331C26-15E8-43E9-8266-986DE923B0A9} = {88EC9EF1-4BE1-4058-984D-6F32F17BEDC2}
+		{BF684197-CAD3-44CF-81D3-A22378617EE4} = {81DAEC31-A13C-4BA0-B90A-F3E7B73A2271}
+		{57783619-A954-4F46-BD1A-EE4306286CE4} = {81DAEC31-A13C-4BA0-B90A-F3E7B73A2271}
+		{9490E9C8-829E-4ED5-A52B-B11572C47BC6} = {81DAEC31-A13C-4BA0-B90A-F3E7B73A2271}
+		{44ABF47B-2139-450B-977B-414ADD3EB66D} = {61331C26-15E8-43E9-8266-986DE923B0A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B4BBF47-6595-44E3-889B-9B9E97790E10}

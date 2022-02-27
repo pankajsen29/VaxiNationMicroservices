@@ -5,7 +5,7 @@ using WeatherForecastRemote.Core.Interfaces.Services;
 namespace WeatherForecastRemote.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly IWeatherService _weatherService;
