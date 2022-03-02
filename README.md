@@ -35,11 +35,11 @@ _TO BE UPDATED: API Request Flow diagram_
 
 **This project Demonstrates the below concepts/building blocks**:
 
-**C# record type**
+**A) C# record type**
 
-**Data annotations**
+**B) Data annotations**
 
-**Dependency Injection**:
+**C) Dependency Injection**:
 
 _(using “ConfigureDependencyInjection” extension method)
 (Below lifetimes are used for registering the services under DI container:
@@ -47,18 +47,18 @@ Singleton: the class is instantiated once for the whole application.
 Transient: the class is instantiated once per service resolution, means the class is instantiated every time a link (which uses the class/service) is loaded/refreshed.
 Scoped: the class is instantiated once per scope, meaning the instantiation happens only once for a request/ a single connection. Think of it like a browser tab. This is useful because this actually can be treated as current user’s scope.)_
 
-**DTO – data transfer objects**:
+**D) DTO – data transfer objects**:
 
 _(not to expose the models/entities to external world)
 this is to make an independent contract with the client, so that it doesn’t get affected when there is any addition/deletion to the internal entity/data store._
 
-**Automapper**: 
+**E) Automapper**: 
 
 _we need a mapper to map the DTO object to the actual model in the PATCH action method, to be able to accept the partial changes in the form DTO and applying them to the actual model entity. 
 (Nuget: AutoMapper.Extensions.Microsoft.DependencyInjection)_
 
 
-**Connecting to mongodb**:
+**F) Connecting to mongodb**:
 
 (Nuget: MongoDB.Driver)
 
@@ -68,7 +68,7 @@ pwd: “Pass#word1”,
 with ‘readwrite’ access)
 
 
-**CRUD operations**:
+**G) CRUD operations**:
 
 _(Http Verbs: GET, POST, PUT, PATCH, DELETE etc.) – async calls
 
@@ -146,13 +146,13 @@ DB Screenshot:
 ![image](https://user-images.githubusercontent.com/85120101/154348170-5166934d-b491-441c-8261-0004e61e7e76.png)
 
 
-**Secrets management using .NET Secret Manager**:
+**H) Secrets management using .NET Secret Manager**:
 
 _(Hint - In Visual Studio -> Solution Explorer -> Project right click -> ‘Manage User Secrets’)
 Notice “MongoDbSettings” section in appsettings.json and the class to read these configurations in “Settings” folder. The “Password” is not added as plain text in the appsettings.json file, instead it is stored using .NET Secret Manager._
 
 
-**Global Exception handling**:
+**I) Global Exception handling**:
 
 Exception is handled globally using custom exception handling middleware in the API layer (Middlewares -> ExceptionHandlingMiddleware.cs), which rules out the need of handling exception in each and every method with a Try-Catch block. 
 Notice how the exceptions thrown by deeper layers (i.e., core layer or infrastructure layer exceptions which are defined and thrown from the “Core” layer or Infrastructure layer respectively) are caught, logged and communicated to the UI/client.
@@ -160,7 +160,7 @@ Also, a custom type (Exceptions->ApiError) is used to return the error to the cl
 
 
 
-**Logging**:
+**J) Logging**:
 
 
 ***Serilog***: 
@@ -199,7 +199,7 @@ Nuget: SerilogTimings_
 _All of the above are configured in appsetiings.json for better handling and maintenance._
 
 
-**Health Checks**:
+**K) Health Checks**:
 
 _The service has a health check API endpoint (e.g., HTTP /health) that returns the status of service (Healthy/Unhealthy/Degraded).
 Extensions -> HealthCheckConfiguration.cs_
@@ -218,7 +218,7 @@ _***api/health/live*** => is the service alive?_
 (Complete URLs: https://localhost:7028/api/health/live)
 
 
-**API Versioning**:
+**L) API Versioning**:
 
 _It is the effective communication around the changes to the API, so the consumers know what to expect from it. It is a best practice for managing/maintaining the API in a transparent way._
 
@@ -240,14 +240,14 @@ ConfigureSwaggerOptions is the configuration option class which is responsible t
 _And in the other overloaded ConfigureSwagger() method after the service is built, it is shown how the middleware is configured to create the endpoints for swagger for each version._
 
 
-**Configuring different profiles in Properties** : launchSettings.json
+**M) Configuring different profiles in Properties** : launchSettings.json
 
 _e.g. 
 "VaccineInfo.Api.Dev"
 "VaccineInfo.Api.Prod"_
 
 
-**Creation of Docker image**:
+**N) Creation of Docker image**:
 
 _The below article describes nicely the docker image building process for a multi-project solution: (as our API is divided into different layers (projects) following Clean Architecture)_
 https://www.softwaredeveloper.blog/multi-project-dotnet-core-solution-in-docker-image
@@ -274,19 +274,27 @@ _Docker CLI looks for .dockerignore file in root directory of the build context,
 
 ***Steps to use mongodb container along with our API container***:
 
-1.create a network:
+1. Create a network:
 
 docker network create vaccineapiservicenetwork
 
-2.Then run the mongo db container along with the network name:
+2. Then run the mongo db container along with the network name:
   
 docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db -e MONGO_INITDB_ROOT_USERNAME=mongodbadmin -e MONGO_INITDB_ROOT_PASSWORD=Pass#word1 --network=vaccineapiservicenetwork mongo
 
-3.Now run the container of the application: (notice how the MongoDbSettings are passed)
+Note: 
+
+-d: detached mode, means that a Docker container runs in the background of the terminal. It does not receive input or display output.
+
+--rm: Docker removes the anonymous volumes associated with the container when the container is removed.
+
+-p 27017:27017: means port 27017 on the local machine will be mapped to port 27017 in the container. 
+
+3. Now run the container of the application: (notice how the MongoDbSettings are passed)
 
 docker run -it --rm -p 8080:80 -e MongoDbSettings:Host=mongo -e MongoDbSettings:Password=Pass#word1 --network=vaccineapiservicenetwork vaccineinfoapiimage:v1
 
-4.Then test the API:
+4. Then test the API:
 
 GET: http://localhost:8080/api/v1/vaccines
 
@@ -416,7 +424,7 @@ _Web API project with basic APIs for calling a remote microservice for gathering
 
 **This project Demonstrates the below concepts/building blocks**:
 
-***Remote Service Details***:
+***A) Remote Service Details***:
 
 _The first part of the remote service is stored in the appsettings.json file_:
 
@@ -441,6 +449,87 @@ https://api.openweathermap.org/data/2.5/weather?q=Bangalore&appid=4f2bd981e39d0c
 (Hint: This is a free API to get the current weather for a given city name)
 
 
+***B) Resilience and transient-fault handling***:
+
+A .NET library named Polly is used in the API service which provides resilience and transient-fault handling capabilities (for example, when the remote service doesn’t respond on time or stays down for some time). These are implemented by applying Polly policies such as Retry, Circuit Breaker etc.
+
+Nuget: Microsoft.Extensions.Http.Polly 
+
+_Retry_:
+
+services.AddHttpClient<IWeatherClient, WeatherClient>()
+ 	.AddTransientHttpErrorPolicy(policy => policy.WaitAndRetryAsync(10, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))));
+
+
+_Explanation_: 
+
+A policy of type Polly.Retry.AsyncRetryPolicy is configured that will wait and retry for 10 times in this case. On each retry, the duration to wait/sleep is calculated by calling the below expression with the current retry number (1 for first retry, 2 for second retry etc.):
+ 
+retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
+
+Here, after the first try it will sleep for 2 seconds (2 to the power 1) before the second call and then will wait for 4 seconds (2 to the power 2) before the third call and so on. This expression is called “Exponential backoff”.
+
+
+_Circuit Breaker_:
+
+services.AddHttpClient<IWeatherClient, WeatherClient>()
+.AddTransientHttpErrorPolicy(policy => policy.WaitAndRetryAsync(10, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))))
+.AddTransientHttpErrorPolicy(policy => policy.CircuitBreakerAsync(3, TimeSpan.FromSeconds(15)));
+
+_Explanation_: 
+
+In the code example above, the circuit breaker policy is configured so it breaks or opens the circuit when there have been five consecutive faults when retrying the Http requests. When that happens, the circuit will break for 10 seconds: in that period, calls will be failed immediately by the circuit-breaker rather than actually be placed.
+
+
+***C) Creation of Docker image***:
+
+1.	Build the docker image:
+
+docker build -f WeatherForecastRemote.Api/Dockerfile -t weatherforecastremoteapiimage:v1 . 
+
+build context: from where the “docker build” is executed (in our case it is: “VaxiNationMicroservices\WeatherForecastRemoteService\src")
+
+"Dockerfile": is inside the API project, that’s why, which "Dockerfile" is to be read is specified in “docker build” command using --file (-f) option. 
+
+
+2.	Run Api container:
+
+To create and run the container of the application:
+
+docker run -it --rm -p 5000:80 -e ServiceSettings:ApiKey=4f3bd781e79d0c64c21460d9705238c2 weatherforecastremoteapiimage:v1 
+
+Note: 
+
+-it:  interactive mode, this is about whether to keep stdin open (some programs, like bash, use stdin and other programs don't).
+
+--rm: Docker removes the anonymous volumes associated with the container when the container is removed.
+
+-p 5000:80: means port 5000 on the local machine will be mapped to port 80 in the container. Communications will happen through Http, though the remote/external url is with Https. And also HttpsRedirection middleware is not added to the request pipeline (app.UseHttpsRedirection();).
+
+-e ServiceSettings:ApiKey: The API key used by the remote/external Url is passed here, in development mode which is stored as project’s user secret.
+
+
+3.	Test the API:
+
+GET: http://localhost:5000/api/weatherforecast/bangalore
+
+
+4.	Push the Api image to Docker hub: 
+
+(a) Login if needed (using docker login) and the then re-tag the image as below:
+
+docker tag weatherforecastremoteapiimage:v1 pankajsen29/weatherforecastremoteapiimage:v1
+
+(b) And then push the docker image to docker hub using:
+
+docker push pankajsen29/weatherforecastremoteapiimage:v1
+
+
+5.	Docker Pull command for this image:
+
+docker pull pankajsen29/weatherforecastremoteapiimage
+
+
 
 **Domain layer Project Name**: 
 
@@ -461,7 +550,7 @@ WeatherForecastRemote.Infrastructure
 _This is a Class Library project. This is basically the data access layer which implements the actual remote calling operation which are called by the API layer indirectly through the Core layer for collecting the weather data to alert the user about the forecast of the appointment day._
 
 
-***HttpClient***:
+***A) HttpClient***:
 
 _It provides a class for sending HTTP requests and receiving HTTP responses from a resource identified by a URI. We have used the instance of HttpClient to make remote API call._
 
