@@ -40,8 +40,6 @@ void ConfigureMiddleware(IApplicationBuilder app, IWebHostEnvironment env)
         app.UseSwaggerUI();
     }
 
-    app.UseHttpsRedirection();
-
     app.UseRouting();
 
     app.UseAuthorization();
